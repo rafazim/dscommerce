@@ -7,7 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import com.devsuperior.dscommerce.controllers.handlers.ControllerExceptionHandler;
 import com.devsuperior.dscommerce.dto.ProductDTO;
 import com.devsuperior.dscommerce.entities.Product;
 import com.devsuperior.dscommerce.repositories.ProductRepository;
@@ -19,14 +18,8 @@ import jakarta.persistence.EntityNotFoundException;
 @Service
 public class ProductService {
 
-    private final ControllerExceptionHandler controllerExceptionHandler;
-
 	@Autowired
 	private ProductRepository repository;
-
-    ProductService(ControllerExceptionHandler controllerExceptionHandler) {
-        this.controllerExceptionHandler = controllerExceptionHandler;
-    }
 	
 	@Transactional(readOnly = true)
 	public ProductDTO findById(Long id) {
