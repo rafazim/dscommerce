@@ -11,6 +11,7 @@ import com.devsuperior.dscommerce.controllers.handlers.ControllerExceptionHandle
 import com.devsuperior.dscommerce.dto.ProductDTO;
 import com.devsuperior.dscommerce.entities.Product;
 import com.devsuperior.dscommerce.repositories.ProductRepository;
+import com.devsuperior.dscommerce.services.exceptions.DatabaseException;
 import com.devsuperior.dscommerce.services.exceptions.ResourceNotFoundException;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -59,7 +60,7 @@ public class ProductService {
             throw new ResourceNotFoundException("Recurso não encontrado");
         }
     }
-	/*
+	
 	@Transactional(propagation = Propagation.SUPPORTS)
 	public void delete(Long id) {
 		if (!repository.existsById(id)) {
@@ -72,7 +73,7 @@ public class ProductService {
 	        	throw new DatabaseException("Falha de integridade referencial");
 	   	}
 	}
-	*/
+	
 	private void copyDtoToEntity(ProductDTO dto, Product entity) {
 		entity.setName(dto.getName());
 		entity.setDescription(dto.getDescription());
